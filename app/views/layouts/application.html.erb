@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>IT 231 Demo W3CSS</title>
+    <title>Books Online Store</title>
     
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,6 +10,13 @@
   </head>
 
   <body class="w3-container">
+     <div id="banner">
+   <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
+  <span class="title"><%= @page_title %></span>
+  </div>
+  <div id="columns">
+    <div id="side">
+      </div>
 
     <div class="w3-bar w3-light-grey">
       <a href="/" class="w3-bar-item w3-button w3-border">
@@ -20,7 +27,17 @@
       <a href="/static_pages/about" class="w3-bar-item w3-button w3-border">About</a>
       <a href="/products" class="w3-bar-item w3-button w3-border">Products</a>
       <a href="/carts" class="w3-bar-item w3-button w3-border">Carts</a>      
-      <a href="/line_items" class="w3-bar-item w3-button w3-border">LineItems</a>      
+      <a href="/line_items" class="w3-bar-item w3-button w3-border">LineItems</a> 
+      <%= link_to 'Login', login_path, method: :post, class:"w3-bar-item w3-button w3-border"  %>
+<% if session[:user_id] %>
+
+<%= link_to 'Orders', orders_path, class:"w3-bar-item w3-button w3-border" %>
+<%= link_to 'Products', products_path, class:"w3-bar-item w3-button w3-border"  %>
+<%= link_to 'Users', users_path, class:"w3-bar-item w3-button w3-border"  %>
+      <a href="/carts" class="w3-bar-item w3-button w3-border">Carts</a>      
+      <a href="/line_items" class="w3-bar-item w3-button w3-border">LineItems</a>    
+<%= link_to 'Logout', logout_path, method: :delete, class:"w3-bar-item w3-button w3-border"  %>
+<% end %>
     </div>
 
    <div class="w3-container">
